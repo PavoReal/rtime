@@ -40,10 +40,10 @@ rtime.exe [OPTIONS]
 
 ## Installation
 
-To install `rtime`, you'll need to have Rust installed. You can then build the application using `cargo`:
+To install `rtime`, you'll need to have Rust installed. You can install rust [here](https://www.rust-lang.org/tools/install) if you don't already have it. You can then build the application using `cargo`:
 
 ```sh
-git clone https://github.com/yourusername/rtime.git
+git clone https://github.com/PavoReal/rtime.git
 cd rtime
 cargo build --release
 ```
@@ -57,7 +57,7 @@ The compiled executable will be available at `target/release/rtime`.
 To start capturing time:
 
 ```sh
-rtime.exe --start
+rtime --start
 ```
 
 ### Stop Capturing Time and Calculate Duration
@@ -81,32 +81,21 @@ rtime.exe --stop --clean
 To specify a custom file for storing timestamps:
 
 ```sh
-rtime.exe --time-file-path custom_timelog --start
+rtime.exe -t .time_file --start
 ```
 
 To use the same file when stopping:
 
 ```sh
-rtime.exe --time-file-path custom_timelog --stop
+rtime.exe -t .time_file --stop
 ```
 
-### Enable Debug Logging
-
-To start capturing with debug logging enabled:
+### Complete Example
 
 ```sh
-rtime.exe --start --debug
+rtime --start && sleep 10 && rtime --stop
+10.28896561 seconds
 ```
-
-To stop capturing with debug logging enabled:
-
-```sh
-rtime.exe --stop --debug
-```
-
-## Contributing
-
-Contributions are welcome! Feel free to open an issue or submit a pull request on GitHub.
 
 ## License
 
