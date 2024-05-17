@@ -10,8 +10,7 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
-
+  build-linux:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,6 +20,20 @@ jobs:
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v4.3.3
       with:
-        name: rtime linux
+        name: rtime-linux
         path: target/release/rtime
-        
+
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install Rust
+      run: rustup default stable
+    - name: Build
+      run: cargo build --release --verbose
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v4.3.3
+      with:
+        name: rtime-windows
+        path: target/release/rtime.exe
